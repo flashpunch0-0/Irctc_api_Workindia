@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const sequelize = require("./config/db");
 const { registerUser, loginUser } = require("./controllers/userAuth");
+const { addTrain, getTrains, updateSeats } = require("./controllers/train");
 
 require("dotenv").config();
 const app = express();
@@ -17,6 +18,9 @@ sequelize
 
 app.post("/register", registerUser);
 app.post("/login", loginUser);
+app.post("/admin/addtrain", addTrain);
+app.post("/admin/gettrain", getTrains);
+app.put("/admin/updateseats", updateSeats);
 app.listen(3010, () => {
   console.log(`Server is running on post 3010`);
 });
