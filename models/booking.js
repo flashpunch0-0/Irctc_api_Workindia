@@ -18,7 +18,9 @@ const Booking = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-
+    booking_time: {
+      type: DataTypes.DATE,
+    },
     no_of_tickets: {
       type: DataTypes.INTEGER,
     },
