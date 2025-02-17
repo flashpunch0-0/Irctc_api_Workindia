@@ -16,7 +16,7 @@ const Train = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    avl_seats: {
+    availableSeats: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
