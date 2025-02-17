@@ -23,12 +23,10 @@ const bookTicket = async (req, res) => {
         booking_time: new Date(),
         username: decrypted.username,
       });
-      res
-        .status(201)
-        .json({
-          message: "ticket booked successfully",
-          ticket_details: booking,
-        });
+      res.status(201).json({
+        message: "ticket booked successfully",
+        ticket_details: booking,
+      });
     } else {
       responseHelper.badRequest(res, "No seats");
     }
@@ -38,6 +36,19 @@ const bookTicket = async (req, res) => {
       " error booking ticket or token expired"
     );
   }
+};
+
+const getBookingDetail = async (req, res) => {
+  const { booking_id } = req.body;
+  const token = req.header("Authorization")?.split(" ")[1];
+  if (!token) return responseHelper.notExists(res, "No token , access denied");
+
+  const decrypted = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  if (!decrypted) return responseHelper.notExists(res, "Invalid Token");
+  const ticket = await Booking.findOne({
+    where: { booking_id: booking_id },
+  });
+  return res.status(201).json({ message: `ticket is ${ticket}` });
 };
 
 module.exports = {
