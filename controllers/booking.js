@@ -48,9 +48,10 @@ const getBookingDetail = async (req, res) => {
   const ticket = await Booking.findOne({
     where: { booking_id: booking_id },
   });
-  return res.status(201).json({ message: `ticket is ${ticket}` });
+  return res.status(201).json({ message: ticket });
 };
 
 module.exports = {
   bookTicket,
+  getBookingDetail,
 };
