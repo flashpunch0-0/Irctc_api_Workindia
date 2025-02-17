@@ -4,6 +4,7 @@ const sequelize = require("./config/db");
 const { registerUser, loginUser } = require("./controllers/userAuth");
 const { addTrain, getTrains, updateSeats } = require("./controllers/train");
 const { bookTicket, getBookingDetail } = require("./controllers/booking");
+const apiKeyMiddleware = require("./middleware/apikeyMiddleware");
 
 require("dotenv").config();
 const app = express();
@@ -19,9 +20,9 @@ sequelize
 
 app.post("/register", registerUser);
 app.post("/login", loginUser);
-app.post("/admin/addtrain", addTrain);
+app.post("/admin/addtrain", apiKeyMiddleware, addTrain);
 app.post("/admin/gettrain", getTrains);
-app.put("/admin/updateseats", updateSeats);
+app.put("/admin/updateseats", apiKeyMiddleware, updateSeats);
 app.post("/bookticket", bookTicket);
 app.post("/getticket", getBookingDetail);
 app.listen(3010, () => {
