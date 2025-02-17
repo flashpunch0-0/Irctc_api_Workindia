@@ -6,6 +6,9 @@ const responseHelper = {
   created: (res, message) => {
     return res.status(201).json({ message });
   },
+  notExists: (res, message) => {
+    return res.status(401).json({ message });
+  },
 };
 
 module.exports = responseHelper;

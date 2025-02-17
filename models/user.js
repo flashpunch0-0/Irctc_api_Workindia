@@ -23,6 +23,12 @@ const User = sequelize.define(
       type: DataTypes.ENUM("admin", "user"),
       allowNull: false,
     },
+    tokenVersion: {
+      // ✅ Corrected: Explicitly define data type
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1, // ✅ Default value
+    },
   },
   {
     timestamps: false,
