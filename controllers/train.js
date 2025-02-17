@@ -80,7 +80,10 @@ const updateSeats = async (req, res) => {
     await train.save();
     res.status(200).json({ message: "Seats updates successfully" });
   } catch (error) {
-    return responseHelper.badRequest(res, "Error updating seats");
+    return responseHelper.badRequest(
+      res,
+      "Error updating seats or token expired"
+    );
   }
 };
 
