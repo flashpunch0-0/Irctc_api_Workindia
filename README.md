@@ -32,6 +32,7 @@ Tables<br>
   -booking_time: String<br>
 
 ## API ROUTES
+
 ![image](https://github.com/user-attachments/assets/84f0b9e7-fa71-40eb-9d0c-c47a96ec857a)
 
 ### AUTH
@@ -73,6 +74,10 @@ Tables<br>
   - Request { booking_id }(int), token
   - Response {booking}
 
+## Race Condition
+
+- `Sequelize lock function` - Depicts row lock transaction , updates the variable and rollbacks transaction if needed
+  -Sequelize has inbuilt function to create a transaction.
 
 ## INSTALLATION AND RUNNING
 
@@ -80,10 +85,9 @@ Tables<br>
 -Run `npm install`<br>
 -Run `nodemon server.js` or `node server.js`<br>
 -JWT_SECRET_KEY and ADMIN_API_KEY is stored in .env file.<br>
--to generate a 32 bit key use `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` in cmd 
+-to generate a 32 bit key use `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` in cmd
 
-### Possible updates 
-Logout function-  but what if the user logs in from multiple systems 
+### Possible updates
+
+Logout function- but what if the user logs in from multiple systems
 we can use tokenversion to prevent this. so when the user logsout we can increase the tokenversion which makes all the other tokens with oldertoken version as invalid
-
-
