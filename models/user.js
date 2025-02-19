@@ -24,9 +24,10 @@ const User = sequelize.define(
       allowNull: false,
     },
     tokenVersion: {
+      // ✅ Corrected: Explicitly define data type
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1,
+      defaultValue: 1, // ✅ Default value
     },
   },
   {
